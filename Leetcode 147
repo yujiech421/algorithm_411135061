@@ -1,1 +1,24 @@
+#include <vector>
+#include <algorithm>
 
+class Solution {
+public:
+    ListNode* insertionSortList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return head;
+        }
+        std::vector<int> nums;
+        ListNode* curr = head;
+        while (curr != nullptr) {
+            nums.push_back(curr->val);
+            curr = curr->next;
+        }
+        std::sort(nums.begin(), nums.end());
+        curr = head;
+        for (int i = 0; i < nums.size(); i++) {
+            curr->val = nums[i];
+            curr = curr->next;
+        }
+        return head;
+    }
+};
